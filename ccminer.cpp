@@ -111,6 +111,7 @@ enum sha_algos {
 	ALGO_X15,
 	ALGO_X17,
     ALGO_YES,
+	ALGO_YES16,
 	ALGO_YES32,
     ALGO_ZIFTR,
 };
@@ -148,6 +149,8 @@ static const char *algo_names[] = {
 	"x15",
 	"x17",
 	"yescrypt",
+	"yescrypt16",
+	"yescrypt32",
 	"zr5",
 };
 
@@ -1651,6 +1654,9 @@ static void *miner_thread(void *userdata)
 
 		case ALGO_YES:
 			rc = scanhash_yescrypt(thr_id, work.data, work.target, max_nonce, &hashes_done);
+			break;
+		case ALGO_YES16:
+			rc = scanhash_yescrypt16(thr_id, work.data, work.target, max_nonce, &hashes_done);
 			break;
 		case ALGO_YES32:
 			rc = scanhash_yescrypt32(thr_id, work.data, work.target, max_nonce, &hashes_done);
