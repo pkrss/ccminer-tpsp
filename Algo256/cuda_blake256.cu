@@ -129,7 +129,7 @@ static void blake256_compress1st(uint32_t *h, const uint32_t *block, const uint3
 		hostGS(0, 5, 0xA, 0xF, 0x8);
 		hostGS(1, 6, 0xB, 0xC, 0xA);
 		hostGS(2, 7, 0x8, 0xD, 0xC);
-		hostGS(3, 4, 0x9, 0xE, 0xE);
+		hostGS(3, 4, 0x9, 0xE, 14);
 	}
 
 	for (int i = 0; i < 16; i++) {
@@ -179,7 +179,7 @@ static void blake256_compress2nd(uint32_t *h, const uint32_t *block, const uint3
 		GS2(0, 5, 0xA, 0xF, 0x8);
 		GS2(1, 6, 0xB, 0xC, 0xA);
 		GS2(2, 7, 0x8, 0xD, 0xC);
-		GS2(3, 4, 0x9, 0xE, 0xE);
+		GS2(3, 4, 0x9, 0xE, 14);
 	}
 
 	#pragma unroll 16

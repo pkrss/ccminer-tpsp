@@ -165,7 +165,7 @@ void blake256_compress(uint32_t *h, const uint32_t *block, const uint32_t T0, co
 		GS(0, 5, 0xA, 0xF, 0x8);
 		GS(1, 6, 0xB, 0xC, 0xA);
 		GS(2, 7, 0x8, 0xD, 0xC);
-		GS(3, 4, 0x9, 0xE, 0xE);
+		GS(3, 4, 0x9, 0xE, 14);
 	}
 #if PRECALC64
 	// only compute h6 & 7

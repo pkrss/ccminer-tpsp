@@ -36,6 +36,16 @@
 #include "miner.h"
 #include "elist.h"
 
+#if defined(_MSC_VER) && (_MSC_VER >= 1900)
+
+FILE _iob[] = { *stdin, *stdout, *stderr };
+extern "C" FILE * __cdecl __iob_func(void)
+{
+	return _iob;
+}
+#pragma comment( lib, "legacy_stdio_definitions" )
+#endif
+
 bool opt_tracegpu = false;
 
 struct data_buffer {

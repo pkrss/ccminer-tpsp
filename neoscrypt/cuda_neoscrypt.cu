@@ -274,7 +274,7 @@ static __forceinline__ __device__ void Blake2S(uint32_t * inout, const uint32_t 
 		BLAKE_G(x, 0x08, V.lo.s0, V.lo.s5, V.hi.s2, V.hi.s7, inout);
 		BLAKE_G(x, 0x0A, V.lo.s1, V.lo.s6, V.hi.s3, V.hi.s4, inout);
 		BLAKE_G(x, 0x0C, V.lo.s2, V.lo.s7, V.hi.s0, V.hi.s5, inout);
-		BLAKE_G(x, 0x0E, V.lo.s3, V.lo.s4, V.hi.s1, V.hi.s6, inout);
+		BLAKE_G(x, 14, V.lo.s3, V.lo.s4, V.hi.s1, V.hi.s6, inout);
 	}
 	V.lo ^= V.hi ^ tmpblock;
 	((uint8*)inout)[0] = V.lo;
@@ -307,7 +307,7 @@ static __forceinline__ __host__ void Blake2Shost(uint32_t * inout, const uint32_
 		BLAKE_Ghost(x, 0x08, V.lo.s0, V.lo.s5, V.hi.s2, V.hi.s7, inkey);
 		BLAKE_Ghost(x, 0x0A, V.lo.s1, V.lo.s6, V.hi.s3, V.hi.s4, inkey);
 		BLAKE_Ghost(x, 0x0C, V.lo.s2, V.lo.s7, V.hi.s0, V.hi.s5, inkey);
-		BLAKE_Ghost(x, 0x0E, V.lo.s3, V.lo.s4, V.hi.s1, V.hi.s6, inkey);
+		BLAKE_Ghost(x, 14, V.lo.s3, V.lo.s4, V.hi.s1, V.hi.s6, inkey);
 	}
 
 	V.lo ^= V.hi;
@@ -329,7 +329,7 @@ static __forceinline__ __host__ void Blake2Shost(uint32_t * inout, const uint32_
 		BLAKE_Ghost(x, 0x08, V.lo.s0, V.lo.s5, V.hi.s2, V.hi.s7, inout);
 		BLAKE_Ghost(x, 0x0A, V.lo.s1, V.lo.s6, V.hi.s3, V.hi.s4, inout);
 		BLAKE_Ghost(x, 0x0C, V.lo.s2, V.lo.s7, V.hi.s0, V.hi.s5, inout);
-		BLAKE_Ghost(x, 0x0E, V.lo.s3, V.lo.s4, V.hi.s1, V.hi.s6, inout);
+		BLAKE_Ghost(x, 14, V.lo.s3, V.lo.s4, V.hi.s1, V.hi.s6, inout);
 	}
 
 	V.lo ^= V.hi ^ tmpblock;
