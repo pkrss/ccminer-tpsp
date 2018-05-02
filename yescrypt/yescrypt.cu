@@ -19,9 +19,9 @@ extern void yescrypt_cpu_init(int thr_id, int threads, uint32_t* hash, uint32_t*
 extern uint32_t yescrypt_cpu_hash_k4(int thr_id, int threads, uint32_t startNounce, int order);
   
 
-extern "C" int scanhash_yescrypt(int thr_id, uint32_t *pdata,
+extern "C" int _scanhash_yescrypt(int thr_id, uint32_t *pdata,
 	const uint32_t *ptarget, uint32_t max_nonce,
-	unsigned long *hashes_done)
+	unsigned long *hashes_done, int bits)
 {
 	const uint32_t first_nonce = pdata[19];
 //	if (pdata[0] == 0) {return 0;} // don't start unless it is really up
@@ -94,4 +94,19 @@ extern "C" int scanhash_yescrypt(int thr_id, uint32_t *pdata,
 
 	*hashes_done = pdata[19] - first_nonce + 1;
 	return 0;
+}
+
+
+extern "C" int scanhash_yescrypt(int thr_id, uint32_t *pdata,
+	const uint32_t *ptarget, uint32_t max_nonce,
+	unsigned long *hashes_done)
+{
+	_scanhash_yescrypt(thr_id, pdata, ptarget, max_nonce, hashes_done, 16);
+}
+
+extern "C" int scanhash_yescrypt32(int thr_id, uint32_t *pdata,
+	const uint32_t *ptarget, uint32_t max_nonce,
+	unsigned long *hashes_done)
+{
+	_scanhash_yescrypt(thr_id, pdata, ptarget, max_nonce, hashes_done, 32);
 }

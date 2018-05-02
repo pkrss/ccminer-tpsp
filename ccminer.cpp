@@ -111,6 +111,7 @@ enum sha_algos {
 	ALGO_X15,
 	ALGO_X17,
     ALGO_YES,
+	ALGO_YES32,
     ALGO_ZIFTR,
 };
 
@@ -1230,6 +1231,7 @@ static void stratum_gen_work(struct stratum_ctx *sctx, struct work *work)
 		case ALGO_NEO:
         case ALGO_BITC:
         case ALGO_YES:
+		case ALGO_YES32:
 		case ALGO_PLUCK:
 			diff_to_target(work->target, sctx->job.diff / (65536.0 * opt_difficulty));
 			break;
@@ -1649,6 +1651,9 @@ static void *miner_thread(void *userdata)
 
 		case ALGO_YES:
 			rc = scanhash_yescrypt(thr_id, work.data, work.target, max_nonce, &hashes_done);
+			break;
+		case ALGO_YES32:
+			rc = scanhash_yescrypt32(thr_id, work.data, work.target, max_nonce, &hashes_done);
 			break;
 
 		case ALGO_BITC:

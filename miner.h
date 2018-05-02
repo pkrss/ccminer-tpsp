@@ -386,6 +386,10 @@ extern int scanhash_yescrypt(int thr_id, uint32_t *pdata,
 	const uint32_t *ptarget, uint32_t max_nonce,
 	unsigned long *hashes_done);
 
+extern int scanhash_yescrypt32(int thr_id, uint32_t *pdata,
+	const uint32_t *ptarget, uint32_t max_nonce,
+	unsigned long *hashes_done);
+
 extern int scanhash_bitcredit(int thr_id, uint32_t *pdata,
 	const uint32_t *ptarget, const uint32_t *midstate, uint32_t max_nonce,
 	unsigned long *hashes_done);
