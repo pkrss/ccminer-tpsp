@@ -359,9 +359,10 @@ yescrypt_bsty(const uint8_t * passwd, size_t passwdlen,
 }
 
 
-extern uint64_t YESCRYPT_N;
-extern uint32_t YESCRYPT_R;
-extern uint32_t YESCRYPT_P;
+
+uint64_t YESCRYPT_N = 2048;
+uint32_t YESCRYPT_R = 8;
+uint32_t YESCRYPT_P = 1;
 
 void yescrypt_hash(const unsigned char *input, unsigned char *output)
 {

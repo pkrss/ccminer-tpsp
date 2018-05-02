@@ -99,15 +99,17 @@ extern "C" int _scanhash_yescrypt(int thr_id, uint32_t *pdata,
 char *yescrypt_client_key = NULL;
 int yescrypt_client_key_len = 0;
 
-uint64_t YESCRYPT_N = 2048;
-uint32_t YESCRYPT_R = 8;
-uint32_t YESCRYPT_P = 1;
+extern "C" {
+	extern uint64_t YESCRYPT_N;
+	extern uint32_t YESCRYPT_R;
+	extern uint32_t YESCRYPT_P;
+}
 
 extern "C" int scanhash_yescrypt(int thr_id, uint32_t *pdata,
 	const uint32_t *ptarget, uint32_t max_nonce,
 	unsigned long *hashes_done)
 {
-	_scanhash_yescrypt(thr_id, pdata, ptarget, max_nonce, hashes_done, 0);
+	return _scanhash_yescrypt(thr_id, pdata, ptarget, max_nonce, hashes_done, 0);
 }
 
 extern "C" int scanhash_yescrypt16(int thr_id, uint32_t *pdata,
@@ -119,7 +121,7 @@ extern "C" int scanhash_yescrypt16(int thr_id, uint32_t *pdata,
 	YESCRYPT_N = 4096;
 	YESCRYPT_R = 16;
 	YESCRYPT_P = 1;
-	_scanhash_yescrypt(thr_id, pdata, ptarget, max_nonce, hashes_done, 16);
+	return _scanhash_yescrypt(thr_id, pdata, ptarget, max_nonce, hashes_done, 16);
 }
 
 extern "C" int scanhash_yescrypt32(int thr_id, uint32_t *pdata,
@@ -131,5 +133,5 @@ extern "C" int scanhash_yescrypt32(int thr_id, uint32_t *pdata,
 	YESCRYPT_N = 4096;
 	YESCRYPT_R = 32;
 	YESCRYPT_P = 1;
-	_scanhash_yescrypt(thr_id, pdata, ptarget, max_nonce, hashes_done, 32);
+	return _scanhash_yescrypt(thr_id, pdata, ptarget, max_nonce, hashes_done, 32);
 }
