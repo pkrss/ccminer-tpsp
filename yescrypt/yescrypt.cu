@@ -96,10 +96,9 @@ extern "C" int _scanhash_yescrypt(int thr_id, uint32_t *pdata,
 	return 0;
 }
 
-char *yescrypt_client_key = NULL;
-int yescrypt_client_key_len = 0;
-
 extern "C" {
+	extern char *yescrypt_client_key;
+	extern int yescrypt_client_key_len;
 	extern uint64_t YESCRYPT_N;
 	extern uint32_t YESCRYPT_R;
 	extern uint32_t YESCRYPT_P;

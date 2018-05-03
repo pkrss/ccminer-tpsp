@@ -149,8 +149,8 @@ static const char *algo_names[] = {
 	"x15",
 	"x17",
 	"yescrypt",
-	"yescrypt16",
-	"yescrypt32",
+	"yescryptr16",
+	"yescryptr32",
 	"zr5",
 };
 
@@ -267,6 +267,8 @@ Options:\n\
 			x15         X15\n\
 			x17         X17 (peoplecurrency)\n\
             yescrypt    yescrypt\n\
+            yescrypt16  yescryptr16\n\
+            yescrypt32  yescryptr32\n\
             zr5         ZiftrCoin\n\
 			whirl       Whirlcoin (old whirlpool)\n\
 			whirlpoolx  Vanilla coin\n\
@@ -2035,6 +2037,7 @@ void parse_arg(int key, char *arg)
 				break;
 			}
 		}
+		printf("algo=%s %d/%d\n", arg, i, ARRAY_SIZE(algo_names));
 		if (i == ARRAY_SIZE(algo_names))
 			show_usage_and_exit(1);
 		break;
@@ -2472,15 +2475,15 @@ int main(int argc, char *argv[])
 	long flags;
 	int i;
 
-	printf("*** ccminer DJM edition " PACKAGE_VERSION " for nVidia GPUs by djm34 ***\n");
+	printf("*** ccminer pkrss edition " PACKAGE_VERSION " for nVidia GPUs by djm34 by pkrss ***\n");
 #ifdef _MSC_VER
-	printf("    Built with VC++ 2013 and nVidia CUDA SDK 6.5\n\n");
+	printf("    Built with VC++ 2017 and nVidia CUDA SDK 9.1\n\n");
 #else
-	printf("    Built with the nVidia CUDA SDK 6.5\n\n");
+	printf("    Built with the nVidia CUDA SDK 9.1\n\n");
 #endif
 	printf("  Originally based on Christian Buchner and Christian H. project\n");
 	printf("  Include some of the work of tpruvot, sp, tsiv and klausT.\n\n");
-	printf("BTC donation address: 1NENYmxwZGHsKFmyjTc5WferTn5VTFb7Ze (djm34)\n\n");
+	printf("BTC donation address: 3MWdCDHTkA9HkJ5S3rZCb8Tfqtx4GDev2z (pkrss)\n\n");
 
 	rpc_user = strdup("");
 	rpc_pass = strdup("");

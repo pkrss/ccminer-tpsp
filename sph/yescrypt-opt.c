@@ -944,8 +944,9 @@ uint64_t * XY, uint64_t * S)
 }
 
 
-extern char *yescrypt_client_key;
-extern int yescrypt_client_key_len;
+
+char *yescrypt_client_key = NULL;
+int yescrypt_client_key_len = 0;
 
 /**
  * yescrypt_kdf(shared, local, passwd, passwdlen, salt, saltlen,
@@ -1151,8 +1152,8 @@ yescrypt_kdf(const yescrypt_shared_t * shared, yescrypt_local_t * local,
 			HMAC_SHA256_CTX_Y ctx;
 			HMAC_SHA256_Init_Y(&ctx, buf, buflen);
 			if (yescrypt_client_key)
-				HMAC_SHA256_Update_Y(&ctx, salt, saltlen);
-				// HMAC_SHA256_Update(&ctx, (uint8_t*)yescrypt_client_key, yescrypt_client_key_len);
+				HMAC_SHA256_Update_Y(&ctx, (uint8_t*)yescrypt_client_key, yescrypt_client_key_len);
+				// HMAC_SHA256_Update(&ctx, (uint8_t *)salt, saltlen);
 			else
 				HMAC_SHA256_Update_Y(&ctx, salt, saltlen);
 			HMAC_SHA256_Final_Y((uint8_t *)sha256, &ctx);
