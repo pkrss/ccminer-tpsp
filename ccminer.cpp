@@ -1234,6 +1234,7 @@ static void stratum_gen_work(struct stratum_ctx *sctx, struct work *work)
 		case ALGO_NEO:
         case ALGO_BITC:
         case ALGO_YES:
+		case ALGO_YES16:
 		case ALGO_YES32:
 		case ALGO_PLUCK:
 			diff_to_target(work->target, sctx->job.diff / (65536.0 * opt_difficulty));
